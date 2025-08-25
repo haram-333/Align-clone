@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 // Import Swiper styles
@@ -57,6 +57,7 @@ const testimonials = [
 ];
 
 export default function TestimonialCarousel() {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const swiperRef = useRef<any>(null);
     const { elementRef, isVisible } = useScrollAnimation({
         threshold: 0.2,
@@ -126,7 +127,7 @@ export default function TestimonialCarousel() {
                                                 </div>
                                                 {/* Testimonial text */}
                                                 <p className="text-gray-700 mb-6 text-lg leading-relaxed font-semibold">
-                                                    "{t.text}"
+                                                    &ldquo;{t.text}&rdquo;
                                                 </p>
                                                 {/* Name + role */}
                                                 <h4 className="font-bold text-gray-900">{t.name}</h4>

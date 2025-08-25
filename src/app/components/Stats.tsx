@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 
 export default function Stats() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -10,16 +10,17 @@ export default function Stats() {
     dataCenters: 0,
     devices: 0,
     applications: 0,
-    workplaces: 0
+    workplaces: 0,
+    totalSteps: 0
   });
 
-  const targetValues = {
+  const targetValues = useMemo(() => ({
     professionals: 190,
     dataCenters: 2,
     devices: 6000,
     applications: 1000,
     workplaces: 1
-  };
+  }), []);
 
   useEffect(() => {
     const el = rootRef.current;
@@ -76,7 +77,7 @@ export default function Stats() {
     }, interval);
 
     return () => clearInterval(timer);
-  }, [hasStarted]);
+  }, [hasStarted, targetValues]);
 
   const stats = [
     {

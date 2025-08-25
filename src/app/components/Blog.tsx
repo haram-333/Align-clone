@@ -79,7 +79,7 @@ export default function Blog() {
             
             {/* Description */}
             <p className="text-lg text-gray-700 leading-relaxed">
-              The data center industry is experiencing unprecedented transformation driven by multiple factors—from AI workloads and power constraints to economic pressures. Through their work with clients across various sectors, Align's experts have observed five key trends that are reshaping infrastructure requirements and operational strategies.
+              The data center industry is experiencing unprecedented transformation driven by multiple factors—from AI workloads and power constraints to economic pressures. Through their work with clients across various sectors, Align&apos;s experts have observed five key trends that are reshaping infrastructure requirements and operational strategies.
             </p>
             
             {/* Read More Link */}

@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import Submenu from "./Submenu";
 import { submenuConfigs } from "./submenuData";
-import MobileSubmenu from "./MobileSubmenu";
 import UtilityBar from "./UtilityBar";
 import MobileOverlayMenu from "./MobileOverlayMenu";
 import SearchModal from "./SearchModal";
@@ -12,7 +10,7 @@ import SearchModal from "./SearchModal";
 export default function SecondaryNav() {
     const [openKey, setOpenKey] = useState<string | null>(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    const [mobileSubKey, setMobileSubKey] = useState<string | null>(null);
+
     const [searchModalOpen, setSearchModalOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const closeTimerRef = useRef<number | null>(null);
@@ -161,7 +159,7 @@ export default function SecondaryNav() {
                     >
                         <path d="M21.71 20.29L18 16.61A9 9 0 1016.61 18l3.68 3.68a1 1 0 001.42-1.42zM11 18a7 7 0 117-7 7 7 0 01-7 7z" fill="currentColor"/>
                     </svg>
-                    <button aria-label="Open menu" onClick={() => { setMobileMenuOpen((v) => !v); if (mobileMenuOpen) setMobileSubKey(null); }} className={`p-2 transition-colors duration-300 ${
+                    <button aria-label="Open menu" onClick={() => { setMobileMenuOpen((v) => !v); }} className={`p-2 transition-colors duration-300 ${
                         isScrolled ? 'text-gray-800' : 'text-white'
                     }`}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">

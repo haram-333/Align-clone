@@ -1,6 +1,6 @@
 "use client"
 
-import type { SubmenuData, SubmenuColumn, SubmenuLink } from "@/app/components/submenuTypes";
+import type { SubmenuData } from "@/app/components/submenuTypes";
 
 type Props = {
   data: SubmenuData;

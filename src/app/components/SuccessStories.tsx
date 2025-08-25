@@ -54,7 +54,7 @@ export default function SuccessStories() {
             SUCCESS STORIES
           </div>
           <h2 className="text-4xl md:text-5xl font-semibold text-[#008AD4] mb-6 leading-tight max-w-2xl mx-auto">
-            Featured Success Stories From Across Align's Solutions
+            Featured Success Stories From Across Align&apos;s Solutions
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Explore our featured success stories from Workplace Technology, Data Center Solutions to Migration and Cloud, and Managed Services.

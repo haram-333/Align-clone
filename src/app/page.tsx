@@ -79,7 +79,7 @@ export default function Home() {
       </div>
       <section className="max-w-full px-10 py-16">
         <h2 className="text-2xl font-bold text-center mb-10">
-          Proven Success with Align's World-Class People, Process & Tools
+          Proven Success with Align&apos;s World-Class People, Process & Tools
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {cards.map((card, i) => (

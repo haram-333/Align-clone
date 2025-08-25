@@ -26,7 +26,7 @@ export default function MobileOverlayMenu({ isOpen, onClose }: Props) {
     if (current.type === "root") return null;
     if (current.type === "menu") return NAV_ITEMS.find((n) => n.key === current.key)?.label ?? null;
     if (current.type === "column") {
-      const col = (submenuConfigs as any)[current.key].columns[current.columnIndex] as SubmenuColumn;
+      const col = submenuConfigs[current.key].columns[current.columnIndex] as SubmenuColumn;
       return col?.title ?? null;
     }
     return null;
@@ -90,7 +90,7 @@ export default function MobileOverlayMenu({ isOpen, onClose }: Props) {
 
           {current.type === "menu" && (
             <div className="divide-y divide-black/10">
-              {(submenuConfigs as any)[current.key].columns.map((col: SubmenuColumn, idx: number) => (
+              {submenuConfigs[current.key].columns.map((col: SubmenuColumn, idx: number) => (
                 <button key={idx} onClick={() => openColumn(current.key, idx)} className="w-full flex items-center justify-between py-4">
                   <span className="text-gray-800">{col.title}</span>
                   <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" className="text-black">
@@ -104,7 +104,7 @@ export default function MobileOverlayMenu({ isOpen, onClose }: Props) {
           {current.type === "column" && (
             <div className="divide-y divide-black/10">
               {(() => {
-                const col = (submenuConfigs as any)[current.key].columns[current.columnIndex] as SubmenuColumn;
+                const col = submenuConfigs[current.key].columns[current.columnIndex] as SubmenuColumn;
                 return col.links.map((link: SubmenuLink, i: number) => (
                   <a key={i} href={link.href} className="flex items-center justify-between py-3">
                     <span className="text-black text-base">{link.label}</span>

@@ -90,7 +90,7 @@ export default function TrustSection() {
             
             {/* Main Heading */}
             <h2 className="text-4xl lg:text-5xl font-semibold text-white leading-tight text-left">
-              We're built on relationships.
+              We&apos;re built on relationships.
             </h2>
             
             {/* Bullet Points */}
@@ -105,7 +105,7 @@ export default function TrustSection() {
               <div className="flex items-start gap-3">
                 <span className="text-xl">✓</span>
                 <p className="font-normal">
-                  Our people, process, and tools have transformed technology for the world's top companies.
+                  Our people, process, and tools have transformed technology for the world&apos;s top companies.
                 </p>
               </div>
               
