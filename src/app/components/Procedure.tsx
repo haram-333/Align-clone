@@ -45,15 +45,18 @@ export default function Procedure({
     return (
       <div
         ref={rootRef}
-        className={`rounded-xl p-[3px] bg-gradient-to-r from-[#1F3467] to-[#008AD4] shadow-md transition-all duration-700 ease-out will-change-transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}
-        style={{ transitionDelay: `${delay}ms` }}
+        className={`rounded-lg p-[3px] bg-gradient-to-r from-[#1F3467] to-[#008AD4] transition-all duration-700 ease-out will-change-transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}`}
+        style={{ 
+          transitionDelay: `${delay}ms`,
+          boxShadow: '0px 15px 35px -5px rgba(0, 0, 0, 0.6)'
+        }}
       >
-        <div className="bg-white rounded-xl px-8 h-full py-12">
+        <div className="bg-white rounded-lg flex-1 w-full h-full" style={{ padding: 'clamp(20px, 2vw, 40px)' }}>
           <h3 className="text-2xl font-bold text-[#008AD4] mb-3 inline-block border-b border-dotted border-[#008AD4] pb-1">{title}</h3>
-          <p className="text-gray-700 mb-4 text-lg">{description}</p>
+          <p className="text-gray-700 mb-4 text-lg font-medium">{description}</p>
           <a
             href={link}
-            className="text-[#00AEEF] font-semibold inline-flex items-center gap-1 hover:underline"
+            className="text-[#00AEEF] text-xl font-semibold inline-flex items-center gap-1 hover:underline"
           >
             Learn More →
           </a>

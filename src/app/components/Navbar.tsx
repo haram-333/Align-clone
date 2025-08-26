@@ -41,7 +41,7 @@ export default function SecondaryNav() {
 
     return (
         <div className={`w-full z-50 transition-all duration-300 ${
-            isScrolled ? 'fixed top-0 left-0 bg-white shadow-lg' : 'relative'
+            isScrolled ? 'fixed top-0 left-0 bg-white' : 'relative'
         }`}>
             {/* Top Utility Bar (Desktop only) - Hidden when scrolled */}
             {!isScrolled && (
@@ -52,7 +52,7 @@ export default function SecondaryNav() {
 
             {/* Main Navbar */}
             <div className={`w-full px-3 md:px-6 lg:px-10 flex items-center justify-between relative z-50 transition-all duration-300 ${
-                isScrolled ? 'py-4' : 'py-2'
+                isScrolled ? 'py-4' : 'py-1'
             }`}>
                 {/* Logo and US Services */}
                 <div className={`logo flex xl:flex-row flex-col items-center gap-1 xl:gap-2 transition-colors duration-300 ${

@@ -46,23 +46,28 @@ export default function SuccessStories() {
   ]
 
   return (
-    <section ref={rootRef} className="py-16 px-10 bg-white">
-      <div className="max-w-7xl mx-auto text-center">
+    <section ref={rootRef} className="py-16 bg-white">
+      <div className="text-center">
         {/* Top Section */}
         <div className="mb-12">
           <div className="text-base font-semibold text-gray-600 tracking-wide uppercase mb-4">
             SUCCESS STORIES
           </div>
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#008AD4] mb-6 leading-tight max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-semibold text-[#008AD4] mb-6 leading-tight max-w-[57.5%] mx-auto"
+            style={{
+              fontWeight: 600,
+              color: '#008AD4',
+              lineHeight: '1.1'
+            }}>
             Featured Success Stories From Across Align&apos;s Solutions
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-[62%] font-medium mx-auto leading-relaxed">
             Explore our featured success stories from Workplace Technology, Data Center Solutions to Migration and Cloud, and Managed Services.
           </p>
         </div>
 
         {/* Success Story Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-auto">
           {successStories.map((story, i) => (
                          <div
                key={i}

@@ -39,32 +39,32 @@ export default function Blog() {
   }, []);
 
   return (
-         <section 
-       ref={rootRef}
-       className={`py-16 px-10 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
-         isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
-       }`}
-       style={{ backgroundColor: '#F5F5F5' }}
-     >
-      <div className="max-w-7xl mx-auto relative z-10">
-                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                     {/* Left side - Blog Image */}
-           <div className={`transition-all duration-1000 ease-out ${
-             isContentVisible ? "opacity-100" : "opacity-0"
-           }`}>
+    <section 
+      ref={rootRef}
+      className={`py-24 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
+      }`}
+      style={{ backgroundColor: '#F5F5F5' }}
+    >
+      <div className="w-full max-w-[1200px] px-8 mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left side - Blog Image */}
+          <div className={`transition-all duration-1000 ease-out ${
+            isContentVisible ? "opacity-100" : "opacity-0"
+          }`}>
             <div className="relative">
-                             <Image
-                 src="/images/blog.jpg"
-                 alt="Data center technology and infrastructure"
-                 width={500}
-                 height={350}
-                 className="w-full h-auto rounded-lg shadow-lg"
-               />
+              <Image
+                src="/images/blog.jpg"
+                alt="Data center technology and infrastructure"
+                width={500}
+                height={350}
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
             </div>
           </div>
 
           {/* Right side - Blog Content */}
-          <div className={`space-y-4 transition-all duration-1000 ease-out lg:w-4/5 ${
+          <div className={`space-y-4 transition-all duration-1000 ease-out lg:w-full ${
             isContentVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
           }`}>
             {/* Date */}
@@ -78,7 +78,7 @@ export default function Blog() {
             </h2>
             
             {/* Description */}
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className="text-lg text-gray-700 font-medium leading-relaxed max-w-[97%]">
               The data center industry is experiencing unprecedented transformation driven by multiple factors—from AI workloads and power constraints to economic pressures. Through their work with clients across various sectors, Align&apos;s experts have observed five key trends that are reshaping infrastructure requirements and operational strategies.
             </p>
             

@@ -65,16 +65,16 @@ export default function ServiceCard({
       className={`relative rounded-xl p-[2px] shadow-md transition-all duration-700 ease-out will-change-transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"} hover:shadow-lg overflow-hidden`}
       style={{ 
         transitionDelay: `${delay}ms`,
-        background: 'linear-gradient(90deg, #1F3467 0%, #008AD4 70%)'
+        background: 'linear-gradient(90deg, #008AD4 0%, #00D1FF 100%)'
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Default Content */}
-      <div className={`bg-white rounded-xl px-8 py-4 text-left transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`bg-white rounded-xl px-8 py-8 text-left transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}>
         {/* SVG Icon in Circle */}
-        <div className="flex justify-start mb-6">
-          <div className="w-20 h-20 rounded-full flex items-center justify-center bg-white">
+        <div className="flex justify-start mb-4">
+          <div className="w-[65px] h-[65px] rounded-full flex items-center justify-center bg-white">
             <Image
               src={`/images/${iconName}.svg`}
               alt={`${iconName} icon`}
@@ -85,7 +85,7 @@ export default function ServiceCard({
           </div>
         </div>
         
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 leading-tight">
+        <h3 className="text-2xl font-bold text-gray-900 mb-4 leading-tight">
           {title}
         </h3>
         <a
@@ -98,12 +98,13 @@ export default function ServiceCard({
 
       {/* Hover Overlay Content */}
       <div 
-        className={`absolute inset-0 rounded-xl transition-all duration-300 ease-out ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`absolute top-0 left-0 z-[1] mb-5 flex h-full w-full items-start rounded-none bg-none flex-col flex-nowrap justify-center transition-all duration-300 ease-out ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         style={{
-          background: 'linear-gradient(135deg, #008AD4 0%, #00D1FF 100%)'
+          background: 'linear-gradient(135deg, #008AD4 0%, #00D1FF 100%)',
+          padding: '30px'
         }}
       >
-        <div className="px-8 py-4 h-full flex flex-col justify-center text-white">
+        <div className="h-full flex flex-col justify-center text-white">
           {/* Hover Content - Slides up from bottom */}
           <div className={`transition-all duration-400 ease-out ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
             <h3 className="text-2xl font-bold mb-4 leading-tight text-black">

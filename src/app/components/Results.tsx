@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 
 export default function Results() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -39,22 +38,20 @@ export default function Results() {
   }, []);
 
   return (
-         <section 
-       ref={rootRef}
-       className={`py-6 px-10 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
-         isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
-       }`}
-     >
+    <section 
+      ref={rootRef}
+      className={`py-32 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
+      }`}
+    >
       {/* Animated Background Image */}
       <div 
-        className="absolute inset-0 z-0"
+        className="absolute top-0 left-0 h-full w-full z-0 overflow-hidden"
         style={{
           backgroundImage: 'url(/images/results.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'top',
-          backgroundRepeat: 'no-repeat',
-          transform: isVisible ? 'scale(1.3)' : 'scale(1)',
-          transition: 'transform 1.5s ease-out',
+          backgroundRepeat: 'no-repeat'
         }}
       />
       
@@ -62,84 +59,67 @@ export default function Results() {
       <div 
         className="absolute inset-0 z-5"
         style={{
-          background: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))'
+          background: 'linear-gradient(rgba(0, 0, 0, 0.5))'
         }}
       ></div>
       
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className={`space-y-6 lg:w-11/12 transition-all duration-1000 ease-out ${
-            isContentVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
-          }`}>
-            {/* Results Arrow */}
-            <div className="flex justify-start -mt-6">
-              <Image
-                src="/images/results-arrow.svg"
-                alt="Results arrow pointing down"
-                width={32}
-                height={64}
-                className="w-8 h-16 filter brightness-0 invert"
-              />
+      <div className="w-full max-w-[1200px] px-8 mx-auto relative z-10">
+        {/* Left Content */}
+        <div className={`w-3/4 space-y-3 transition-all duration-1000 ease-out ${
+          isContentVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+        }`}>
+          {/* Results Label */}
+          <div className="text-base font-semibold text-white tracking-wide uppercase text-left">
+            RESULTS
+          </div>
+          
+          {/* Main Heading */}
+          <h2 className="w-3/4 text-4xl lg:text-5xl font-semibold text-white leading-tight text-left">
+            IT Transformation—Done Right.
+          </h2>
+          
+          {/* Bullet Points */}
+          <div className="w-4/5 space-y-2 text-lg text-white leading-relaxed">
+            <div className="flex items-center gap-3">
+              <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-4 flex-shrink-0 mt-1">
+                <path d="M6.38298 15.4209L0 9.03792L2.23404 6.80388L6.38298 10.9528L16.9149 0.420898L19.1489 2.65494L6.38298 15.4209Z" fill="white"/>
+              </svg>
+              <p className="font-normal">
+                Flexible solutions designed by experts, built with the future in mind.
+              </p>
             </div>
             
-            {/* Results Label */}
-            <div className="text-base font-semibold text-white tracking-wide uppercase text-left">
-              RESULTS
+            <div className="flex items-center gap-3">
+              <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-4 flex-shrink-0 mt-1">
+                <path d="M6.38298 15.4209L0 9.03792L2.23404 6.80388L6.38298 10.9528L16.9149 0.420898L19.1489 2.65494L6.38298 15.4209Z" fill="white"/>
+              </svg>
+              <p className="font-normal">
+                Our history makes us credible. Our work keeps us competitive. Our people are our strength.
+              </p>
             </div>
             
-            {/* Main Heading */}
-            <h2 className="text-4xl lg:text-5xl font-semibold text-white leading-tight text-left">
-              IT Transformation—Done Right.
-            </h2>
-            
-            {/* Bullet Points */}
-            <div className="space-y-4 text-lg text-white leading-relaxed">
-              <div className="flex items-start gap-3">
-                <span className="text-white text-xl">✓</span>
-                <p className="font-normal">
-                  Flexible solutions designed by experts, built with the future in mind.
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <span className="text-xl">✓</span>
-                <p className="font-normal">
-                  Our history makes us credible. Our work keeps us competitive. Our people are our strength.
-                </p>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <span className="text-xl">✓</span>
-                <p className="font-normal">
-                  Whether you need to minimize overhead, modernize your workloads, accelerate change, or scale your business—we have you covered.
-                </p>
-              </div>
-            </div>
-            
-            {/* Button */}
-            <div className="pt-2 flex justify-start">
-              <button 
-                className="text-black font-bold px-8 py-3 rounded-lg transition-all duration-500 cursor-pointer w-full lg:w-auto"
-                style={{
-                  background: 'linear-gradient(270deg, var(--gradient-start, #00D1FF) 10.61%, var(--gradient-end, #008AD4) 64.08%)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.setProperty('--gradient-start', '#008AD4');
-                  e.currentTarget.style.setProperty('--gradient-end', '#00D1FF');
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.setProperty('--gradient-start', '#00D1FF');
-                  e.currentTarget.style.setProperty('--gradient-end', '#008AD4');
-                }}
-              >
-                Explore our Success Stories
-              </button>
+            <div className="flex items-center gap-3">
+              <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-4 flex-shrink-0 mt-1">
+                <path d="M6.38298 15.4209L0 9.03792L2.23404 6.80388L6.38298 10.9528L16.9149 0.420898L19.1489 2.65494L6.38298 15.4209Z" fill="white"/>
+              </svg>
+              <p className="font-normal">
+                Whether you need to minimize overhead, modernize your workloads, accelerate change, or scale your business—we have you covered.
+              </p>
             </div>
           </div>
-
-          {/* Right side - empty for spacing */}
-          <div className="hidden lg:block"></div>
+          
+          {/* Button */}
+          <div className="pt-2 flex justify-start">
+            <button 
+              className="text-center border-none rounded-[5px] px-[23px] py-[15px] text-[#141414] font-bold transition-all duration-500 cursor-pointer"
+              style={{
+                background: 'linear-gradient(88.89deg, #008AD4 10.61%, #00D1FF 64.08%)',
+                boxShadow: '0px 3px 9px rgba(20, 20, 20, 0.25)'
+              }}
+            >
+              Explore our Success Stories
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -36,15 +36,14 @@ export default function AboutAlign() {
   return (
     <section 
       ref={rootRef}
-      className={`py-20 px-10 bg-white overflow-hidden transition-all duration-700 ease-out will-change-transform ${
+      className={`py-20 bg-white overflow-hidden transition-all duration-700 ease-out will-change-transform ${
         isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
       }`}
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div className="grid grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <div className="space-y-4 lg:w-11/12">
-            <div className="text-base font-semibold text-gray-600 tracking-wide uppercase">
+          <div className="space-y-4">
+            <div className="text-base font-normal leading-[26px] flex items-center tracking-[1px] uppercase mb-[10px]">
               ABOUT ALIGN
             </div>
             
@@ -53,28 +52,21 @@ export default function AboutAlign() {
             </h2>
             
             <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
-              <p className="font-normal">
+              <p className="font-medium">
                 The rise of AI has had a massive impact on the IT industry - from increasing demands on data center infrastructure, to creating increasing risk from a cybersecurity standpoint, and even enabling more advanced workplace technology solutions. Align is uniquely equipped to address all of these facets of the AI revolution with our team of experts.
               </p>
               
-              <p className="font-normal">
+              <p className="font-medium">
                 From strategy to delivery, our winning combination of comprehensive IT solutions and experienced professionals unite to accelerate change from the data center to the workplace and into the cloud.
               </p>
             </div>
             
             <div className="pt-4">
               <button 
-                className="text-black font-bold px-8 py-3 rounded-lg transition-all duration-500 cursor-pointer"
+                className="text-center border-none rounded-[5px] px-[23px] py-[15px] text-[#141414] font-bold transition-all duration-500 cursor-pointer"
                 style={{
-                  background: 'linear-gradient(270deg, var(--gradient-start, #00D1FF) 10.61%, var(--gradient-end, #008AD4) 64.08%)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.setProperty('--gradient-start', '#008AD4');
-                  e.currentTarget.style.setProperty('--gradient-end', '#00D1FF');
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.setProperty('--gradient-start', '#00D1FF');
-                  e.currentTarget.style.setProperty('--gradient-end', '#008AD4');
+                  background: 'linear-gradient(88.89deg, #008AD4 10.61%, #00D1FF 64.08%)',
+                  boxShadow: '0px 3px 9px rgba(20, 20, 20, 0.25)'
                 }}
               >
                 About Align
@@ -111,7 +103,6 @@ export default function AboutAlign() {
 
           </div>
         </div>
-      </div>
     </section>
   );
 }

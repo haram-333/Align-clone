@@ -70,14 +70,26 @@ export default function TestimonialCarousel() {
                  .swiper-slide {
                      padding: 0 !important;
                  }
+                 .swiper-container {
+                     user-select: none;
+                     -webkit-user-select: none;
+                     -moz-user-select: none;
+                     -ms-user-select: none;
+                 }
+                 .testimonial-card {
+                     user-select: none;
+                     -webkit-user-select: none;
+                     -moz-user-select: none;
+                     -ms-user-select: none;
+                 }
              `}</style>
-            <div ref={elementRef} className={`w-full py-10 bg-white transition-all duration-1000 ease-out ${
+            <div ref={elementRef} className={`w-full pt-12 pb-12 bg-white transition-all duration-1000 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-                <h2 className="text-5xl font-bold text-center text-[#008AD4] mb-12">
+                <h2 className="text-[#008AD4] font-bold text-center mb-[50px] text-4xl lg:text-5xl">
                     Client Testimonials
                 </h2>
-                <div className="max-w-7xl mx-auto px-4">
+                <div className="max-w-[1200px] mx-auto px-8 mb-[50px]">
                     <div className="w-full">
                         <Swiper
                             ref={swiperRef}
@@ -111,9 +123,8 @@ export default function TestimonialCarousel() {
                         >
                             {testimonials.map((t, index) => (
                                 <SwiperSlide key={index}>
-                                    <div className="relative w-full rounded-xl p-[2px] bg-gradient-to-tr from-[#008AD4] via-[#008AD4] to-[#00D1FF]">
-                                        {/* Inner white card */}
-                                        <div className="bg-white rounded-xl p-6 h-[500px]">
+                                    <div className="testimonial-card relative w-full h-[500px] rounded-[5px] p-[2px]" style={{ background: 'linear-gradient(44.39deg, #008AD4 43.93%, #00D1FF 89.9%)' }}>
+                                        <div className="bg-white rounded-[5px] h-full p-12 px-8 pb-8">
                                             <div className="flex flex-col items-start text-left h-full">
                                                 {/* Profile image */}
                                                 <div className="w-20 h-20 rounded-full mb-6 bg-gray-200 flex items-center justify-center overflow-hidden mt-6">
@@ -140,19 +151,15 @@ export default function TestimonialCarousel() {
                                 </SwiperSlide>
                             ))}
                         </Swiper>
+                    </div>
+                </div>
 
-
-
-                        {/* View All Testimonials Button */}
-                        <div className="flex justify-center mt-8 px-4 md:px-0">
-                            <div className="relative rounded-lg p-[2px] bg-gradient-to-tr from-[#008AD4] via-[#008AD4] to-[#00D1FF] w-full md:w-auto">
-                                <button className="bg-white rounded-lg px-6 py-2 text-black font-bold text-lg cursor-pointer w-full md:w-auto">
-                                    View All Testimonials
-                                </button>
-                            </div>
-                        </div>
-
-
+                {/* View All Testimonials Button */}
+                <div className="flex justify-center mt-8 mb-8 px-4 md:px-0">
+                    <div className="relative rounded-lg p-[2px] bg-gradient-to-tr from-[#008AD4] via-[#008AD4] to-[#00D1FF] w-full md:w-auto">
+                        <button className="bg-white rounded-lg px-6 py-2 text-black font-bold text-lg cursor-pointer w-full md:w-auto">
+                            View All Testimonials
+                        </button>
                     </div>
                 </div>
             </div>

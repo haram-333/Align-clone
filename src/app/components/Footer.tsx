@@ -8,11 +8,11 @@ export default function Footer() {
     rootMargin: '0px 0px -100px 0px'
   });
   return (
-         <footer ref={elementRef} className={`bg-white px-4 lg:px-10 transition-all duration-1000 ease-out ${
+         <footer ref={elementRef} className={`bg-white transition-all duration-1000 ease-out ${
            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
          }`}>
-       {/* Upper Footer Section */}
-       <div className="max-w-7xl mx-auto py-8 lg:py-16">
+      {/* Upper Footer Section */}
+      <div className="w-full max-w-[1200px] px-8 mx-auto py-8 lg:py-16">
                                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-48">
           
           {/* Left Side - Logo and Subscription */}
@@ -160,9 +160,9 @@ export default function Footer() {
       </div>
       
              {/* Bottom Footer Section */}
-               <div className="bg-gray-100 border-t border-gray-200">
-          <div className="max-w-7xl mx-auto py-4 lg:py-6">
-           <div className="flex flex-col md:flex-row justify-between items-center gap-3 lg:gap-4 text-xs lg:text-sm text-gray-600">
+      <div className="bg-gray-100 border-t border-gray-200 w-full">
+        <div className="max-w-[1200px] mx-auto px-8 py-4 lg:py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 lg:gap-4 text-xs lg:text-sm text-gray-600">
             <div className="text-center md:text-left">
               Privacy | Terms and Conditions
             </div>

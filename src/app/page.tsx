@@ -77,38 +77,55 @@ export default function Home() {
           </h1>
         </div>
       </div>
-      <section className="max-w-full px-10 py-16">
-        <h2 className="text-2xl font-bold text-center mb-10">
-          Proven Success with Align&apos;s World-Class People, Process & Tools
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {cards.map((card, i) => (
-            <Procedure key={i} {...card} delay={i * 120} />
-          ))}
-        </div>
-      </section>
-
-      {/* Professional & Managed Services Section */}
-      <section className="max-w-full px-10 py-16 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            Explore our<br />
-            Professional & Managed Services
+      
+      {/* Container wrapper for main content */}
+      <div className="w-full max-w-[1500px] px-8 mx-auto">
+        <section className="py-4">
+          <h2 className="text-2xl font-[650] text-center mb-10">
+            Proven Success with Align&apos;s World-Class People, Process & Tools
           </h2>
-          <p className="text-lg text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-            From strategy to delivery, our winning combination of comprehensive IT solutions and experienced professionals 
-            unite to accelerate change from the data center to the workplace and into the cloud.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {serviceCards.map((service, i) => (
-            <ServiceCard key={i} {...service} delay={i * 150} />
-          ))}
-        </div>
-      </section>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {cards.map((card, i) => (
+              <Procedure key={i} {...card} delay={i * 120} />
+            ))}
+          </div>
+        </section>
+
+        {/* Professional & Managed Services Section */}
+        <section className="bg-white">
+          <div className="w-full max-w-[1500px] px-8 mx-auto pt-12">
+            <div className="text-center">
+              <h2 className="text-[46px] font-bold text-gray-900 mb-6 leading-none">
+                Explore our<br />
+                Professional & Managed Services
+              </h2>
+              <p className="text-[18px] font-normal text-[#141414] mb-12 max-w-4xl mx-auto leading-[1.6] tracking-[0] antialiased" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>
+                From strategy to delivery, our winning combination of comprehensive IT solutions and experienced professionals 
+                unite to accelerate change from the data center to the workplace and into the cloud.
+              </p>
+            </div>
+          </div>
+          
+          <div className="pt-16 pb-12">
+            <div className="w-full max-w-[1200px] px-8 mx-auto">
+              <div className="max-w-[1200px] mx-auto">
+                <div className="grid grid-cols-3 gap-6">
+                  {serviceCards.map((service, i) => (
+                    <ServiceCard key={i} {...service} delay={i * 150} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       {/* About Align Section */}
-      <AboutAlign />
+      <div className="pt-16 pb-12">
+        <div className="w-full max-w-[1200px] px-8 mx-auto">
+          <AboutAlign />
+        </div>
+      </div>
       
       {/* Trust Section */}
       <TrustSection />
@@ -129,7 +146,11 @@ export default function Home() {
       <Stats />
       
       {/* Success Stories Section */}
-      <SuccessStories />
+      <div className="pt-16 pb-12">
+        <div className="w-full max-w-[1200px] px-8 mx-auto">
+          <SuccessStories />
+        </div>
+      </div>
       
       {/* Communication Section */}
       <Communication />
@@ -138,7 +159,9 @@ export default function Home() {
       <Contact />
       
       {/* Footer */}
-      <Footer />
+      <div className="pt-16">
+        <Footer />
+      </div>
     </div>
   );
 }
