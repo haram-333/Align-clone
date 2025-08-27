@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Stats() {
@@ -134,7 +134,7 @@ export default function Stats() {
 }
 
 // Separate component for individual stat cards with their own animations
-function StatCard({ stat, index, isVisible }: { stat: any, index: number, isVisible: boolean }) {
+function StatCard({ stat, index, isVisible }: { stat: { value: number, suffix: string, description: string }, index: number, isVisible: boolean }) {
   const [isCardVisible, setIsCardVisible] = useState(false);
 
   useEffect(() => {
