@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Communication() {

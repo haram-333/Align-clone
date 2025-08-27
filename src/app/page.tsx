@@ -65,7 +65,6 @@ const serviceCards = [
 export default function Home() {
   const heroRef = useScrollAnimation({ threshold: 0.3, rootMargin: '0px 0px -100px 0px' });
   const procedureRef = useScrollAnimation({ threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-  const serviceRef = useScrollAnimation({ threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
 
   return (
     <div className="relative">
