@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function SuccessStories() {
@@ -61,7 +61,7 @@ export default function SuccessStories() {
 }
 
 // Separate component for individual cards with their own animations
-function SuccessStoryCard({ story, index, isVisible }: { story: any, index: number, isVisible: boolean }) {
+function SuccessStoryCard({ story, index, isVisible }: { story: { title: string, link: string }, index: number, isVisible: boolean }) {
   const [isCardVisible, setIsCardVisible] = useState(false);
 
   useEffect(() => {
