@@ -2,45 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Blog() {
-  const rootRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const { elementRef, isVisible } = useScrollAnimation({
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  });
+
   const [isContentVisible, setIsContentVisible] = useState(false);
 
   useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-
-    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-
-    if (!isMobile) {
-      // On tablet/desktop: show immediately (no scroll trigger), still animate in
-      requestAnimationFrame(() => setIsVisible(true));
-      // Delay content animation
+    if (isVisible) {
       setTimeout(() => setIsContentVisible(true), 300);
-      return;
     }
-
-    // On mobile: reveal when scrolled into view
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Delay content animation
-          setTimeout(() => setIsContentVisible(true), 300);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  }, [isVisible]);
 
   return (
     <section 
-      ref={rootRef}
+      ref={elementRef}
       className={`py-24 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
         isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
       }`}

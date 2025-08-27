@@ -1,3 +1,5 @@
+"use client";
+
 import SecondaryNav from "./components/Navbar";
 import Procedure from "./components/Procedure";
 import ServiceCard from "./components/ServiceCard";
@@ -12,6 +14,7 @@ import Contact from "./components/Contact";
 import Stats from "./components/Stats";
 import SuccessStories from "./components/SuccessStories";
 import Footer from "./components/Footer";
+import { useScrollAnimation } from "./hooks/useScrollAnimation";
 
 const cards = [
   {
@@ -59,10 +62,14 @@ const serviceCards = [
 ]
 
 export default function Home() {
+  const heroRef = useScrollAnimation({ threshold: 0.3, rootMargin: '0px 0px -100px 0px' });
+  const procedureRef = useScrollAnimation({ threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+  const serviceRef = useScrollAnimation({ threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
+
   return (
     <div className="relative">
       {/* Main Container with Background Image */}
-      <div className="relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/hero.jpeg')" }}>
+      <div ref={heroRef.elementRef} className="relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/images/hero.jpeg')" }}>
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/50 z-0"></div>
         
@@ -71,7 +78,7 @@ export default function Home() {
         </div>
         
         {/* Hero Section */}
-        <div className="w-full py-16 relative z-10">
+        <div className={`w-full py-16 relative z-10 transition-all duration-1000 ease-out ${heroRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white text-center px-4 max-w-5xl mx-auto">
             Turnkey Technology Infrastructure Solutions
           </h1>
@@ -80,7 +87,7 @@ export default function Home() {
       
       {/* Container wrapper for main content */}
       <div className="w-full max-w-[1500px] px-8 mx-auto">
-        <section className="py-4">
+        <section ref={procedureRef.elementRef} className={`py-4 transition-all duration-1000 ease-out ${procedureRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-2xl font-[650] text-center mb-10">
             Proven Success with Align&apos;s World-Class People, Process & Tools
           </h2>
@@ -92,24 +99,24 @@ export default function Home() {
         </section>
 
         {/* Professional & Managed Services Section */}
-        <section className="bg-white">
-          <div className="w-full max-w-[1500px] px-8 mx-auto pt-12">
+        <section ref={serviceRef.elementRef} className={`bg-white transition-all duration-1000 ease-out ${serviceRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="w-full max-w-[1500px] px-4 md:px-8 mx-auto pt-8 md:pt-12">
             <div className="text-center">
-              <h2 className="text-[46px] font-bold text-gray-900 mb-6 leading-none">
+              <h2 className="text-2xl md:text-3xl lg:text-[46px] font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
                 Explore our<br />
                 Professional & Managed Services
               </h2>
-              <p className="text-[18px] font-normal text-[#141414] mb-12 max-w-4xl mx-auto leading-[1.6] tracking-[0] antialiased" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>
+              <p className="text-base md:text-lg lg:text-[18px] font-normal text-[#141414] mb-8 md:mb-12 max-w-4xl mx-auto leading-[1.6] tracking-[0] antialiased px-4" style={{ fontFamily: '"IBM Plex Sans", sans-serif' }}>
                 From strategy to delivery, our winning combination of comprehensive IT solutions and experienced professionals 
                 unite to accelerate change from the data center to the workplace and into the cloud.
               </p>
             </div>
           </div>
           
-          <div className="pt-16 pb-12">
-            <div className="w-full max-w-[1200px] px-8 mx-auto">
+          <div className="pt-8 md:pt-16 pb-8 md:pb-12">
+            <div className="w-full max-w-[1200px] px-4 md:px-8 mx-auto">
               <div className="max-w-[1200px] mx-auto">
-                <div className="grid grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                   {serviceCards.map((service, i) => (
                     <ServiceCard key={i} {...service} delay={i * 150} />
                   ))}

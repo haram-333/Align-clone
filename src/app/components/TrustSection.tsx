@@ -2,45 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function TrustSection() {
-  const rootRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const { elementRef, isVisible } = useScrollAnimation({
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  });
+
   const [isContentVisible, setIsContentVisible] = useState(false);
 
   useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-
-    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-
-    if (!isMobile) {
-      // On tablet/desktop: show immediately (no scroll trigger), still animate in
-      requestAnimationFrame(() => setIsVisible(true));
-      // Delay content animation
+    if (isVisible) {
       setTimeout(() => setIsContentVisible(true), 300);
-      return;
     }
-
-    // On mobile: reveal when scrolled into view
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          // Delay content animation
-          setTimeout(() => setIsContentVisible(true), 300);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  }, [isVisible]);
 
   return (
     <section 
-      ref={rootRef}
+      ref={elementRef}
       className={`py-28 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
         isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
       }`}
@@ -66,9 +46,9 @@ export default function TrustSection() {
           }}
         ></div>
         
-        <div className="w-full max-w-[1200px] px-8 mx-auto relative z-10">
+        <div className="w-full max-w-[1200px] px-4 md:px-8 mx-auto relative z-10">
           {/* Left Content */}
-          <div className={`w-4/5 space-y-3 transition-all duration-1000 ease-out ${
+          <div className={`w-full lg:w-4/5 space-y-3 md:space-y-4 transition-all duration-1000 ease-out ${
             isContentVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
           }`}>
               {/* Trust Label */}
@@ -77,12 +57,12 @@ export default function TrustSection() {
               </div>
               
               {/* Main Heading */}
-              <h2 className="text-4xl lg:text-5xl font-semibold text-white leading-tight text-left">
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight text-left">
                 We&apos;re built on relationships.
               </h2>
               
               {/* Bullet Points */}
-              <div className="w-2/3 space-y-2 text-lg text-white leading-relaxed">
+              <div className="w-full lg:w-2/3 space-y-2 md:space-y-3 text-base md:text-lg text-white leading-relaxed">
                 <div className="flex items-center gap-3">
                   <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-4 flex-shrink-0 mt-1">
                     <path d="M6.38298 15.4209L0 9.03792L2.23404 6.80388L6.38298 10.9528L16.9149 0.420898L19.1489 2.65494L6.38298 15.4209Z" fill="white"/>

@@ -1,30 +1,13 @@
 "use client"
 
 import { useRef, useEffect, useState } from 'react'
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function SuccessStories() {
-  const rootRef = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      }
-    )
-
-    if (rootRef.current) {
-      observer.observe(rootRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const { elementRef, isVisible } = useScrollAnimation({
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  });
 
   const successStories = [
     {
@@ -46,14 +29,14 @@ export default function SuccessStories() {
   ]
 
   return (
-    <section ref={rootRef} className="py-16 bg-white">
-      <div className="text-center">
+    <section ref={elementRef} className="py-16 bg-white">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-8">
         {/* Top Section */}
-        <div className="mb-12">
+        <div className="mb-12 text-left">
           <div className="text-base font-semibold text-gray-600 tracking-wide uppercase mb-4">
             SUCCESS STORIES
           </div>
-          <h2 className="text-4xl md:text-5xl font-semibold text-[#008AD4] mb-6 leading-tight max-w-[57.5%] mx-auto"
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[#008AD4] mb-6 leading-tight w-full"
             style={{
               fontWeight: 600,
               color: '#008AD4',
@@ -61,13 +44,13 @@ export default function SuccessStories() {
             }}>
             Featured Success Stories From Across Align&apos;s Solutions
           </h2>
-          <p className="text-lg text-gray-600 max-w-[62%] font-medium mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-gray-600 w-full font-medium leading-relaxed">
             Explore our featured success stories from Workplace Technology, Data Center Solutions to Migration and Cloud, and Managed Services.
           </p>
         </div>
 
         {/* Success Story Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {successStories.map((story, i) => (
                          <div
                key={i}

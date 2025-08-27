@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState, useMemo } from "react";
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function Stats() {
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const { elementRef, isVisible } = useScrollAnimation({
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
+  });
+
   const [hasStarted, setHasStarted] = useState(false);
   const [counters, setCounters] = useState({
     professionals: 0,
@@ -23,21 +28,10 @@ export default function Stats() {
   }), []);
 
   useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) {
-          setHasStarted(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.5, rootMargin: "0px 0px -100px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [hasStarted]);
+    if (isVisible && !hasStarted) {
+      setHasStarted(true);
+    }
+  }, [isVisible, hasStarted]);
 
   useEffect(() => {
     if (!hasStarted) return;
@@ -109,7 +103,7 @@ export default function Stats() {
 
   return (
               <section 
-       ref={rootRef}
+       ref={elementRef}
        className="py-8 md:py-12 lg:py-16 px-4 md:px-8 lg:px-10 overflow-hidden relative"
        style={{ backgroundColor: '#F5F5F5' }}
      >

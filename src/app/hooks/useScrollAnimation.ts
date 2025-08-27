@@ -11,7 +11,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
   const {
     threshold = 0.1,
     rootMargin = '0px 0px -50px 0px',
-    triggerOnce = true,
+    triggerOnce = false,
     delay = 0
   } = options;
 
@@ -36,8 +36,8 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}) {
           if (triggerOnce) {
             observer.disconnect();
           }
-        } else if (!triggerOnce) {
-          // If not triggerOnce, hide element when it goes out of view
+        } else {
+          // Hide element when it goes out of view (for replay animations)
           setIsVisible(false);
         }
       },
