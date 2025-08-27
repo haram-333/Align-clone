@@ -1,5 +1,6 @@
 "use client";
 
+// Main page component with scroll animations and responsive design
 import SecondaryNav from "./components/Navbar";
 import Procedure from "./components/Procedure";
 import ServiceCard from "./components/ServiceCard";
