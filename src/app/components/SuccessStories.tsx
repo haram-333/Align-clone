@@ -36,7 +36,7 @@ export default function SuccessStories() {
           <div className="text-base font-semibold text-gray-600 tracking-wide uppercase mb-4">
             SUCCESS STORIES
           </div>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[#008AD4] mb-6 leading-tight w-full"
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#008AD4] mb-6 leading-tight w-full"
             style={{
               fontWeight: 600,
               color: '#008AD4',
@@ -52,31 +52,48 @@ export default function SuccessStories() {
         {/* Success Story Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {successStories.map((story, i) => (
-                         <div
-               key={i}
-               className={`rounded-xl p-[2px] shadow-md transition-all duration-700 ease-out will-change-transform ${
-                 isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
-               }`}
-               style={{ 
-                 background: 'linear-gradient(44.39deg, #008AD4 43.93%, #00D1FF 89.9%)',
-                 transitionDelay: `${i * 120}ms`
-               }}
-             >
-              <div className="bg-white rounded-xl px-6 py-8 h-full flex flex-col text-left gap-10">
-                <h3 className="text-xl font-bold text-gray-900 mb-6 leading-tight flex-grow">
-                  {story.title}
-                </h3>
-                <a
-                  href={story.link}
-                  className="text-[#008AD4] font-semibold inline-flex items-center gap-1 hover:underline mt-auto text-lg"
-                >
-                  Read more →
-                </a>
-              </div>
-            </div>
+            <SuccessStoryCard key={i} story={story} index={i} isVisible={isVisible} />
           ))}
         </div>
       </div>
     </section>
   )
+}
+
+// Separate component for individual cards with their own animations
+function SuccessStoryCard({ story, index, isVisible }: { story: any, index: number, isVisible: boolean }) {
+  const [isCardVisible, setIsCardVisible] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) {
+      // Stagger the card animations
+      setTimeout(() => setIsCardVisible(true), index * 200);
+    } else {
+      setIsCardVisible(false);
+    }
+  }, [isVisible, index]);
+
+  return (
+    <div
+      className={`rounded-xl p-[2px] shadow-md transition-all duration-2000 ease-out will-change-transform ${
+        isCardVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+      style={{ 
+        background: 'linear-gradient(44.39deg, #008AD4 43.93%, #00D1FF 89.9%)',
+        transitionDelay: `${index * 200}ms`
+      }}
+    >
+      <div className="bg-white rounded-xl px-6 py-8 h-full flex flex-col text-left gap-10">
+        <h3 className="text-xl font-bold text-gray-900 mb-6 leading-tight flex-grow">
+          {story.title}
+        </h3>
+        <a
+          href={story.link}
+          className="text-[#008AD4] font-semibold inline-flex items-center gap-1 hover:underline mt-auto text-lg"
+        >
+          Read more →
+        </a>
+      </div>
+    </div>
+  );
 }

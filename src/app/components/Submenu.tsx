@@ -11,14 +11,14 @@ type Props = {
 export default function Submenu({ data, onMouseEnter, onMouseLeave }: Props) {
   return (
     <div
-      className="absolute top-full left-1/2 -translate-x-1/2 z-50"
+      className="relative z-50"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       {/* Hover bridge to avoid flicker when moving from trigger to submenu */}
       <div className="h-2" />
       <div
-        className={`flex flex-col md:flex-row rounded-xl shadow-lg ${data.widthClass || 'w-[75vw]'} overflow-hidden`}
+        className={`flex flex-col md:flex-row rounded-xl shadow-lg ${data.widthClass || 'w-[75vw]'} overflow-hidden transform transition-all duration-300 ease-out`}
         style={{ background: data.gradient }}
       >
         {/* Left Section */}
@@ -32,10 +32,10 @@ export default function Submenu({ data, onMouseEnter, onMouseLeave }: Props) {
         <div className="bg-white text-black p-8 md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 rounded-xl m-1">
           {data.columns.map((col, colIdx) => (
             <div key={colIdx}>
-              <h3 className="font-bold text-xl mb-3 inline-block border-b border-dotted border-black pb-1 hover:border-transparent">{col.title}</h3>
+              <h3 className="font-bold text-xl mb-3 inline-block border-b border-dotted border-black pb-1 hover:border-transparent transition-colors duration-200">{col.title}</h3>
               <ul className="space-y-2 text-sm">
                 {col.links.map((link, linkIdx) => (
-                  <li key={linkIdx}><a href={link.href} className="inline-block border-b border-dotted border-black pb-1 hover:border-transparent">{link.label}</a></li>
+                  <li key={linkIdx}><a href={link.href} className="inline-block border-b border-dotted border-black pb-1 hover:border-transparent transition-colors duration-200">{link.label}</a></li>
                 ))}
               </ul>
             </div>

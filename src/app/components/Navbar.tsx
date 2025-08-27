@@ -40,8 +40,8 @@ export default function SecondaryNav() {
 
 
     return (
-        <div className={`w-full z-50 transition-all duration-300 ${
-            isScrolled ? 'fixed top-0 left-0 bg-white' : 'relative'
+        <div className={`w-full z-50 transition-all duration-500 ease-out ${
+            isScrolled ? 'fixed top-0 left-0 bg-white shadow-lg' : 'relative'
         }`}>
             {/* Top Utility Bar (Desktop only) - Hidden when scrolled */}
             {!isScrolled && (
@@ -55,7 +55,7 @@ export default function SecondaryNav() {
                 isScrolled ? 'py-4' : 'py-1'
             }`}>
                 {/* Logo and US Services */}
-                <div className={`logo flex xl:flex-row flex-col items-center gap-1 xl:gap-2 transition-colors duration-300 ${
+                <div className={`logo flex xl:flex-row flex-col items-center gap-1 xl:gap-2 transition-all duration-500 ease-out ${
                     isScrolled ? 'text-gray-800' : 'text-white'
                 }`}>
                     {isScrolled ? (
@@ -114,7 +114,7 @@ export default function SecondaryNav() {
 
                 {/* Desktop Nav Links */}
                 <div className="nav-links hidden xl:block">
-                    <ul className={`flex items-center gap-8 2xl:gap-10 transition-colors duration-300 ${
+                    <ul className={`flex items-center gap-8 2xl:gap-10 transition-all duration-500 ease-out ${
                         isScrolled ? 'text-gray-800' : 'text-white'
                     }`}>
                         {Object.entries(submenuConfigs).map(([key, config]) => (
@@ -125,16 +125,20 @@ export default function SecondaryNav() {
                                 onMouseLeave={scheduleClose}
                             >
                                 <span>{config.label}</span>
-                                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-200 group-hover:rotate-180">
+                                <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" strokeWidth="2" className="transition-transform duration-300 ease-out group-hover:rotate-180">
                                     <path d="M3 3L8 8L13 3"/>
                     </svg>
-                                {openKey === key && (
+                                <div className={`absolute top-full left-1/2 -translate-x-1/2 transition-all duration-300 ease-out ${
+                                    openKey === key 
+                                        ? 'opacity-100 translate-y-0 pointer-events-auto' 
+                                        : 'opacity-0 -translate-y-2 pointer-events-none'
+                                }`}>
                                     <Submenu data={config} onMouseEnter={cancelClose} onMouseLeave={scheduleClose} />
-                                )}
+                                </div>
                 </li>
                         ))}
                         <li>
-                            <button className={`font-bold border rounded-md cursor-pointer transition-all duration-300 ${
+                            <button className={`font-bold border rounded-md cursor-pointer transition-all duration-500 ease-out ${
                                 isScrolled 
                                     ? 'border-transparent text-black px-6 py-2' 
                                     : 'border-white text-white px-5 py-2'
@@ -152,14 +156,14 @@ export default function SecondaryNav() {
                         viewBox="0 0 24 24" 
                         fill="none" 
                         xmlns="http://www.w3.org/2000/svg" 
-                        className={`cursor-pointer ml-2 transition-colors duration-300 ${
+                        className={`cursor-pointer ml-2 transition-all duration-500 ease-out ${
                             isScrolled ? 'text-gray-800' : 'text-white'
                         }`}
                         onClick={() => setSearchModalOpen(true)}
                     >
                         <path d="M21.71 20.29L18 16.61A9 9 0 1016.61 18l3.68 3.68a1 1 0 001.42-1.42zM11 18a7 7 0 117-7 7 7 0 01-7 7z" fill="currentColor"/>
                     </svg>
-                    <button aria-label="Open menu" onClick={() => { setMobileMenuOpen((v) => !v); }} className={`p-2 transition-colors duration-300 ${
+                    <button aria-label="Open menu" onClick={() => { setMobileMenuOpen((v) => !v); }} className={`p-2 transition-all duration-500 ease-out ${
                         isScrolled ? 'text-gray-800' : 'text-white'
                     }`}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">

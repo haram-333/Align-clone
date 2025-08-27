@@ -21,7 +21,7 @@ export default function Blog() {
   return (
     <section 
       ref={elementRef}
-      className={`py-24 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
+      className={`py-24 overflow-hidden transition-all duration-2000 ease-out will-change-transform relative ${
         isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
       }`}
       style={{ backgroundColor: '#F5F5F5' }}

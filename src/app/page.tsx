@@ -78,7 +78,7 @@ export default function Home() {
         </div>
         
         {/* Hero Section */}
-        <div className={`w-full py-16 relative z-10 transition-all duration-1000 ease-out ${heroRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`w-full py-16 relative z-10 transition-all duration-2000 ease-out ${heroRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white text-center px-4 max-w-5xl mx-auto">
             Turnkey Technology Infrastructure Solutions
           </h1>
@@ -87,7 +87,7 @@ export default function Home() {
       
       {/* Container wrapper for main content */}
       <div className="w-full max-w-[1500px] px-8 mx-auto">
-        <section ref={procedureRef.elementRef} className={`py-4 transition-all duration-1000 ease-out ${procedureRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <section ref={procedureRef.elementRef} className={`py-4 transition-all duration-2000 ease-out ${procedureRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-2xl font-[650] text-center mb-10">
             Proven Success with Align&apos;s World-Class People, Process & Tools
           </h2>
@@ -99,7 +99,7 @@ export default function Home() {
         </section>
 
         {/* Professional & Managed Services Section */}
-        <section ref={serviceRef.elementRef} className={`bg-white transition-all duration-1000 ease-out ${serviceRef.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <section className="bg-white">
           <div className="w-full max-w-[1500px] px-4 md:px-8 mx-auto pt-8 md:pt-12">
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl lg:text-[46px] font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
@@ -118,7 +118,7 @@ export default function Home() {
               <div className="max-w-[1200px] mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                   {serviceCards.map((service, i) => (
-                    <ServiceCard key={i} {...service} delay={i * 150} />
+                    <ServiceCard key={i} {...service} delay={i * 200} />
                   ))}
                 </div>
               </div>

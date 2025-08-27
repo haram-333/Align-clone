@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function ServiceCard({
   title,
@@ -15,6 +16,10 @@ export default function ServiceCard({
   delay?: number
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const { elementRef, isVisible } = useScrollAnimation({
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  });
   
   const hoverContent = {
     data: {
@@ -30,39 +35,13 @@ export default function ServiceCard({
       description: "Align Managed Services delivers the highest level of stability and transparency across your IT operations"
     }
   };
-  const rootRef = useRef<HTMLDivElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const el = rootRef.current;
-    if (!el) return;
-
-    const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
-
-    if (!isMobile) {
-      // On tablet/desktop: show immediately (no scroll trigger), still animate in
-      requestAnimationFrame(() => setIsVisible(true));
-      return;
-    }
-
-    // On mobile: reveal when scrolled into view
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div
-      ref={rootRef}
-      className={`relative rounded-xl p-[2px] shadow-md transition-all duration-700 ease-out will-change-transform h-full ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"} hover:shadow-lg overflow-hidden`}
+      ref={elementRef}
+      className={`relative rounded-xl p-[2px] shadow-md transition-all duration-2000 ease-out will-change-transform h-full ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
       style={{ 
         transitionDelay: `${delay}ms`,
         background: 'linear-gradient(90deg, #008AD4 0%, #00D1FF 100%)'

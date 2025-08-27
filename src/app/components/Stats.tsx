@@ -102,46 +102,65 @@ export default function Stats() {
   ];
 
   return (
-              <section 
-       ref={elementRef}
-       className="py-8 md:py-12 lg:py-16 px-4 md:px-8 lg:px-10 overflow-hidden relative"
-       style={{ backgroundColor: '#F5F5F5' }}
-     >
-               <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-6 lg:gap-8 items-start relative">
-            {stats.map((stat, index) => (
+    <section 
+      ref={elementRef}
+      className="py-8 md:py-12 lg:py-16 px-4 md:px-8 lg:px-10 overflow-hidden relative"
+      style={{ backgroundColor: '#F5F5F5' }}
+    >
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 items-start relative">
+          {stats.map((stat, index) => (
+            <StatCard key={index} stat={stat} index={index} isVisible={isVisible} />
+          ))}
+          
+          {/* Divider Lines - positioned relative to grid container */}
+          {stats.map((_, index) => (
+            index < stats.length - 1 && (
               <div 
-                key={index} 
-                className="text-center"
-              >
-                {/* Metric Value */}
-                <div className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#008AD4] mb-2 md:mb-3">
-                  {stat.value.toLocaleString()}{stat.suffix}
-                </div>
-                
-                {/* Description */}
-                <div className="text-sm md:text-base lg:text-lg font-semibold text-gray-900 leading-relaxed px-2">
-                  {stat.description}
-                </div>
-              </div>
-            ))}
-            
-            {/* Divider Lines - positioned relative to grid container */}
-            {stats.map((_, index) => (
-              index < stats.length - 1 && (
-                                 <div 
-                   key={`line-${index}`}
-                   className="hidden lg:block absolute w-1 h-32 bg-[#00D1FF] opacity-60"
-                   style={{
-                     left: `${((index + 1) * 20) - 0.5}%`,
-                     top: '50%',
-                     transform: 'translateY(-50%)'
-                   }}
-                 />
-              )
-            ))}
-          </div>
+                key={`line-${index}`}
+                className="hidden lg:block absolute w-1 h-32 bg-[#00D1FF] opacity-60"
+                style={{
+                  left: `${((index + 1) * 20) - 0.5}%`,
+                  top: '50%',
+                  transform: 'translateY(-50%)'
+                }}
+              />
+            )
+          ))}
         </div>
+      </div>
     </section>
+  );
+}
+
+// Separate component for individual stat cards with their own animations
+function StatCard({ stat, index, isVisible }: { stat: any, index: number, isVisible: boolean }) {
+  const [isCardVisible, setIsCardVisible] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) {
+      // Stagger the stat animations
+      setTimeout(() => setIsCardVisible(true), index * 150);
+    } else {
+      setIsCardVisible(false);
+    }
+  }, [isVisible, index]);
+
+  return (
+    <div 
+      className={`text-center transition-all duration-2000 ease-out ${
+        isCardVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
+    >
+      {/* Metric Value */}
+      <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#008AD4] mb-2 md:mb-3">
+        {stat.value.toLocaleString()}{stat.suffix}
+      </div>
+      
+      {/* Description */}
+      <div className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-gray-900 leading-relaxed px-1 sm:px-2">
+        {stat.description}
+      </div>
+    </div>
   );
 }

@@ -20,9 +20,9 @@ export default function Communication() {
   return (
     <section 
       ref={elementRef}
-      className={`py-32 overflow-hidden transition-all duration-700 ease-out will-change-transform relative ${
-        isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
-      }`}
+              className={`py-32 overflow-hidden transition-all duration-2000 ease-out will-change-transform relative ${
+          isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
+        }`}
     >
       {/* Animated Background Image */}
       <div 
