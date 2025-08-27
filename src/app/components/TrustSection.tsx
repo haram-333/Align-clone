@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export default function TrustSection() {
